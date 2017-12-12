@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AppA</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  
+</head>
+<body>
+  
+<a href="javascript:router.go('a')">Route to A</a> |
+<a href="javascript:router.go('b')">Route to B</a> |
+<a href="javascript:router.go('a', 'a')">Jump to A within A</a> |
+<a href="javascript:router.go('a', 'b')">Jump to B within A</a>
+
+<div id="outlet"></div>
+
+<script src="polyfills.js"></script>
+<script src="router.js"></script>
+<script>
+  var config = [
+      {
+          path: 'a',
+          app: '/app-a/dist'
+      },
+      {
+          path: 'b',
+          app: '/app-b/dist'
+      }
+  ];
+
+  router.config(config);
+  router.init();
+  router.preload();
+</script>
+
+</body>
+</html>
